@@ -1,0 +1,415 @@
+% Unofficial ERC Starting Grant LaTeX template 
+% Source: http://www.arj.no/2013/02/03/erc-stg-latex/
+%
+\documentclass[oneside, a4paper, onecolumn, 11pt]{article}
+
+%%% PACKAGES %%%
+
+\usepackage[left=2cm,top=2cm,bottom=1.5cm,right=2cm]{geometry}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} 		% Add graphics capabilities
+\usepackage{amsmath}  		% Better maths support
+\usepackage{natbib}	% bibliography style
+\setlength{\bibsep}{0.0pt}
+\usepackage{eurosym}
+\usepackage{booktabs}
+
+% To fix list things: 
+\usepackage{enumitem}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*}
+\usepackage{amssymb}
+\renewcommand{\labelitemi}{\tiny$\blacksquare$}
+
+\usepackage{nopageno}
+\usepackage{enumitem}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt} % Remove line at top
+ 
+\lhead{\emph{Santi Roca-F\`abrega}}
+\chead{Part B1}
+\rhead{TOTS}
+\cfoot{\thepage}
+
+\newenvironment{itemize*}%
+  {\begin{itemize}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{0pt}}%
+  {\end{itemize}}
+
+\usepackage{enumitem}
+
+%%% COMMANDS %%%
+
+% Define the title, author and date of the document.
+\title{TOTS:\\ }
+\author{Santi Roca-F\`abrega\\ Universidad Complutense de Madrid}
+
+%%% BODY OF THE DOCUMENT: %%%
+\begin{document}
+\vfill
+
+\begin{center}
+\large{\textbf{ERC Starting Grant 2019\\
+Research proposal [Part B1]\\
+{\it Part B1 is evaluated both in Step 1 and Step 2,\\
+Part B2 is evaluated in Step 2 only)}}
+}
+\vfill
+
+\LARGE{\textbf{Galaxy formation unveiled by the OTS cycle}}
+
+\vfill
+
+\LARGE{\textbf{TOTS}}
+
+\vfill
+
+\end{center}
+{\bf Cover Page:}
+\begin{itemize}
+\item Name of the Principal Investigator (PI): Santi Roca-F\`abrega
+\item Host institution: Universidad Complutense de Madrid
+\item Proposal duration: 60 months
+\end{itemize}
+	
+%\maketitle
+
+\vfill
+
+%%% SUMMARY
+\noindent
+\fbox{
+
+\parbox{0.945\textwidth}{
+\underline{Proposal summary:} \\
+Galaxy formation and evolution is a complex process. Many theoretical approaches have been proposed to understand which mechanisms rules it. Although based on previous observations, many of these theoretical models have not been tested yet due to the lack of new high-quality data. Is at the light of the observational restrictions that high quality simulations can set an essential link between available observations and theoretical models. Generation of new high-quality simulations requires of a constant feedback between cosmologists and experts on star formation, and also between observers and theorists. In this project, under my lead, I plan to establish a research group that includes at least collaborations with young brilliant scientists from each one of the research fields cited above. Our main goal will be to obtain a statistically significant sample of high-resolution, high-quality models using an improved version of the RAMSES code. This new version will include the most recent advances on subgrid physics, in agreement with the most recent observations. The new version of the code, together with a spatial resolution of less than tens of parsecs at z=0, will allow us to go one step further from the most popular zoom-in simulations. These simulations will be ran in the PRACE Research Infraestructure using a set of initial parameters that properly reproduce the most recent observations of both, external galaxies and the Milky Way. The initial conditions has already been generated and span a wide range of galaxy mass and environment. These models will allow us to analyse properties and evolution of the circumgalactic medium, the origin of stellar bars and spiral, and many other hot topics in galaxy formation and evolution. The analysis will be done using a yt-python based script, developed within the AGORA collaboration, that will be improved by young researchers in my team. All data will be made publicly available to be freely used by the community.\\
+}
+}
+\vfill
+\
+%%% Content
+\newpage
+\section*{Section a: Extended Synopsis}
+
+\subsection*{INTRODUCTION}\\
+\subsubsection*{The galaxy formation and evolution problem}\\
+Galaxies formation and evolution is one of the most challenging problems in astrophysics. It requires of a deep knowledge of a large variety of physical processes, from star formation and evolution, and hydrodynamics of interstellar gas and dust, to supermassive black hole formation and AGN activation. Direct information of processes involved on galaxy formation and evolution comes mostly from observations of external galaxies and from stars, gas and dust in the solar neighbourhood. A significant example is the common assumption of a universal stellar Initial Mass Function (IMF), although the commonly used IMF is only based on the one in the solar neighbourhood (XX). Furthermore, observations of external galaxies are only a static picture of their own evolution, so, do not give direct information about their origin and evolution. Only information from stars, gas and dust in the solar neighbourhood, and in the neighbouring galaxies, can give us direct hints on the Galaxy evolution. This data from stars and close-by galaxies is also very limited. The required high quality data is only available from a small local sphere centred in the Sun, so it misses the global picture (XX). Projection effects and degeneracy on the acquisition of physical parameters of stars and galaxies are also a problem that scientists are facing (XX). In the past, although limited, the only method to study the general picture of galaxies formation and evolution was just to study observations of external galaxies (XX). From these observations, and by making hypothesis based on basic principles of physics, researchers proposed theories that in some cases successfully interpreted the available observations (XX). More recently, some of these first theories have been partially confirmed, or discarded, following the progress on the acquisition of data from large sets of external galaxies. These large surveys, like Sloan Digital Sky Survey (SDSS, XX), allowed researchers to make new discoveries through statistical analysis. However, there are still many theoretical approaches that has not been able to be tested through statistical analysis of the available observations. New technical developments are required in order to overcome limitations on the lowest luminosity and/or resolution of available observations (XX). In the past, and in a similar scenario, simulations started to play an important role in the study of galaxy formation and evolution. This importance became stronger in the recent years following advances on computation both on hardware and software.\\
+\subsubsection*{Simulations: The third element}\\
+Simulations are a relatively new theoretical approach, when compared with crude theory, that allows researchers to make preliminary tests of their analytical models (XX). All of these theoretical approaches, both the traditional and the newest, are useless without support from observations (XX). On the other hand, both of them, when properly implemented, became a key tool to understand and unveil new physical processes, and, in some cases, to make predictions.
+This relatively new theoretical approach we call numerical simulations, or just simulations, is based on the same basic principles of physics as the traditional analytical theoretical models. In the project presented here, the basic principles of physics are the gravity and the full set involving hydrodynamical processes. These theories have already been tested many times, in a large variety of fields of science, and became the core of our numerical codes. However, it is important to mention that also these core theories are subject to the scientific method and so they can be changed (e.g. modified gravity theories, XX). If the former basic principles are properly implemented in the numerical codes, and initial conditions are realistic enough, the resulting simulations will be able to reproduce the basics of the galaxy formation and evolution (XX). Ideally, by adding knowledge of physics involved in galaxy formation, and using a large amount of computer time, we should get results that overpass observations and became a real predictive tool; however, in the real world, several technical limitations need to be faced. An intrinsic property of all numerical models is that they can not reproduce physics at all temporal, spatial and mass scales. These limitations are known as the resolution limits. All physical processes that occur out of resolution limits, can not be properly simulated. This, and all its consequences need to be always accounted by researchers in order to not introduce numerical (non physical) effects on the obtained results. In order to simulate properly the processes occurring at larger scales than resolution, but affected by processes undergoing under it, additional information need to be introduced. This new information, known as sub-grid physics, has to reproduce the effect of the real physics that would naturally arise from basic principles, at the smaller scales imposed by the resolution limits. The success on using a particular sub-grid physics recipe depends on having a deep knowledge of the analytical models and theories that has been developed to reproduce the observed small scale physical processes, and also of the real data available. If properly implemented, resulting simulations will follow the proposed sub-grid analytical models and will reproduce larger scale observations. At this stage, simulations will give researchers not only a synthetic picture of the current observations but also a 4D picture of the galaxy formation and evolution problem. In addition, them will also provide to the community of new predictions and restrictions on what could or could not be observed by the next generation of observatories.\\
+\subsubsection*{Closing the research cycle}\\
+Simulations allowed researchers to close old loops in the research cycle. Results from previous loops have been used to continue and speed up the ongoing research. A consequence of this progress in research has been the enhancement on the production of new technologies and patents. But, what does this research cycle is? The research cycle is a continuous set of concatenated research events, that needs of the participation of a large number of scientists with a single common goal, to get new and breakthrough knowledge about how nature works. It is not a one-direction cycle but each one of its chains gives feedback to the contiguous ones. In this continuous feedback is in where it resides the core of the scientific method: validation of all statements and theories through experimentation and comparison with observations. The scientific method is the only path to acquire new knowledge. Following the research cycle, when new knowledge is finally obtained, this is used by future researchers in the next loop. An example of this cycle is the project I present here on the study of galaxy formation and evolution. In the project presented here, the cycle starts by getting the highest quality observations available in our research field, and studying the most recent theoretical approaches. We analyse them both and locate the tension points, i.e. where theory can not explain or reproduce observations. We evaluate whether new observations are required or if current observations need of new theoretical approaches to be properly described. In case new observations are required, we will need to choose carefully which new observations of galaxy formation are needed. This is not an easy task as our global picture of the general  problem of galaxy formation and evolution is far incomplete. In addition, to get the required telescope time is not simple, either. As a consequence of these classical limitations the research field would potentially be slowed down by years, as it previously occurred. However, we have now a new tool available, the numerical simulations. Simulations allow us to test whether current theoretical approaches successfully lead to the formation of observed structures, and, if so, they provide additional constrains on what, how and where should be observed next, to better understand the formation and evolution processes.
+If no new observations are required but the development of new theoretical approaches that describe the current observations, and how universe get there, simulations will became an essential part of the research. New theoretical approaches will need to first explain processes seen in the available data of static systems and, later, to be tested in a fully controlled and time evolving environment, i.e. simulations. In order to succeed, these simulations have to include the most recent theoretical approaches, among them the ones to be tested. As a result, simulated models have to reproduce the available observations and also describe how galaxies get there. Final and intermediate results will be compared with other observations in order to confirm/reject the new theoretical approaches. If confirmed, these new theoretical approaches, combined with simulations will be able to make new predictions on what should be observed next. New observations will restart the cycle.\\
+As noted in the previous example, when any of the elements on the cycle fails, or gets stacked, the contiguous elements are able to take the lead. This way the cycle always push science to a new step on the global understanding of the universe. A continuous feedback between observations, theory and simulations is mandatory in order to improve and speed up our research. This is The Observations-Theory-Simulations cycle (TOTS). \\
+
+\subsection*{THE ROLE OF SIMULATIONS IN THE GALAXY FORMATION AND EVOLUTION PROBLEM: State of the art}\\
+\textcolor{red}{Critical: probably we will have a referee from the numerical simulations world.}}\\
+\\
+
+In the recent years, several research groups have presented new high-quality simulations of galaxy formation and evolution (e.g. Illustris, EAGLE, FIRE, VELA, NIHAO, Horizon). Some of them focused their efforts on getting a statistically significant number of galactic systems, at low-mid resolution, while others used the zoom-in technique on a few specific dark matter halos in order to reach high-resolution in their central region where a main galactic system resides. All these models have been generated with the main goal of studying the general problems of galaxy formation and evolution like mass assembly, dark matter structure and substructures, scaling relations and properties and distribution of the stellar component. Although sometimes controversial, most of them obtained and reported excellent results when comparing models with observations of external galaxies, and demonstrated, one more time, the high value of numerical simulations.\\
+But, although promising, the recent advances on the galaxy formation and evolution field through the use of numerical simulations also opened the door to new challenges. New technological improvements allowed researchers to push models to higher resolutions and, thus, to the need of including new physics and of changing long used numerical strategies. Recently, a few groups have reported the need of expanding the high-resolution region from the main galactic system up to the CGM \citep{Hummels2018}. This in order to properly reproduce the gas acquisition from the IGM, through the CGM and down to the central galactic system. This change on the refinement strategy is mandatory when studying formation and evolution of CGM, but also can make a difference on the general galaxy formation and evolution.\\
+
+\subsection*{ THE NEED OF NEW HIGH QUALITY SIMULATIONS: New physics, higher resolution, new strategies}\\
+\\
+At the light of the ongoing and next observational efforts that are providing, and will provide, high resolution and high quality data, new theoretical developments and high resolution numerical simulations will be required in order to solve the new tensions that will arise between theories and observations. The recent technological improvements that allow us to increase numerical simulations complexity and resolution will also play an important role in this process.\\
+In this project I plan to lead the creation of a breakthrough set of galaxy formation and evolution models. These models will be the next generation of high spatial, temporal and mass resolution simulations, and will include the most recent advances on sub-grid physics (e.g. star formation in molecular clouds, supernovae feedback) and large scale physics (e.g. AGNs, intergalactic magnetic fields). Although optimal, it is not yet realistic to start a simulation where the high resolution region fills the entire halo region inside the virial radius. So, we plan to run new CPU time expensive models that do not focus the high resolution region just on the galactic disk but also include the gas structures that penetrate the galactic halo. We will take advantage of the recent improvements on parallelization, hardware and also software, in the top supercomputing facilities, like the BSC (Barcelona) in order to archive this goal.\\
+These new models will be highly appreciated by the community as will be useful to study and interpret a large variety of observations, both of gas and stars. We plan to make these models available for the community. We wish they will make a valuable contribution on understanding which processes drive the galaxy formation and evolution, and, in particular, of the Milky Way.\\
+
+
+\subsection*{ OPEN QUESTIONS ON GALAXY FORMATION AND EVOLUTION: Our contribution through the current project}\\
+
+As previously mentioned, within this project we plan to use a set of new numerical simulations in order to address some of the hot topics in galaxy formation and evolution. Although much more projects can be initiated from high resolution models as the ones we plan to generate, the scope of the current project is to focus only on two. {\textcolor{red}{This is the part that should be expanded in the B2 part}}:
+
+{\bf A- Formation and properties of the Circumgalactic Medium}\\
+ Currently there are two orthogonal approaches when trying to describe the CGM formation and properties. A first group of researchers supports the hypothesis that CGM is filled with warm-hot gas. In this scenario incoming IGM gas is heated up to virial temperatures by the virial shock and fills the entire galactic halo with low density gas, mixed with hot outflowing gas from disk SNe feedback. A second group argues that the CGM is mostly empty, and most of the gas in there is embedded on a few cold and dense filaments. This second approach is called the hierarchical scenario. By now observations does not favour or discard any hypothesis.\\
+ In the recent years I already started a collaboration on the analysis of the CGM in numerical simulations. Our first results point towards project both scenarios are compatible. We point out that the dominance of the cold-dense or the warm/hot scenario is highly redshift and halo mass dependent. However, in order to deeply understand the CGM physics we require of better simulations and observations. In the coming years several surveys will provide the scientific community of high quality data that will help to better understand the CGM. As mentioned we plan to provide the simulations that will help to interpret these new observations. This simulations will also help us to understand how galaxies acquire fresh gas and the interaction between incoming gas and gas that is already present in the galactic halo. High resolution simulations will allow us to study how turbulence and instabilities affects this process and also to presumably discover new mechanisms undergoing inside the incoming cold gas filaments.
+
+{\bf B- Effects of minor mergers on the recent galaxy evolution}\\
+Our second scientific goal will be to study the effects of minor mergers on the galaxy evolution at low redshift, in particular in galaxies like our Milky Way (MW). Recent results obtained from the analysis of Gaia DR2 data indicate that several minor merger events affected Milky Ways evolution in the last 10Gyrs \citep[e.g.][]{Helmi2018,Mor2019}. Our high resolution models will provide valuable information on how minor mergers shape MW-like galaxies. We also plan to study how minor merger has an impact or not on the formation of non-axisymmetric large scale structures like spiral arms and bars, and on their properties.
+
+
+As mentioned, the products of this project will also have an impact on the overall galaxy formation and evolution community. We plan to invite the community to make use of the new set of models. This will be done through the well established AGORA collaboration, in where the PI is the current scientific coordinator and task force leader. 
+
+
+\subsection*{ EXPERTISE OF THE PI ON THE TOPIC}
+
+The PI started using ART and RAMSES numerical codes in his PhD and most of its academical career revolved around using numerical simulations to better understand observed processes in galaxy formation and evolution. He has run numerical codes in a large variety of architectures in supercomputing facilities (e.g. NERSC, NASA-AMES, Pirineus-BSC, Miztli/atocatl-UNAM, CESCA, HUJI).\\
+SRF also wrote its own version of the RAMSES code which focus the refinement (high-resolution regions), on regions with high pressure/density/temperature/entropy gradients. This code allowed him and his collaborators to get the first zoom-in simulations on the cold flows feeding MW-like galactic halos. This new refinement strategy allows to capture the multiphase nature of CGM gas and also hydrodynamic instabilities. The required refinement strategy has also been tested in constrained problems of gas flow inside cosmological filaments by Mandelker and collaborators (Mandelker2018,Dekel,Birnboim). SRF also wrote several analysis scripts for RAMSES and ART data, and also a short code that allows the conversion from ART to RAMSES files.\\
+Currently SRF is leading two international projects: The AGORA comparison project and the COST-Gaia WG1a. In the former SRF is in contact with most of the current international code leaders, working together in order to improve their numerical codes. In the later SRF works together with observers, most of them highly involved on analysing data from Gaia and Gaia-ESO survey.\\
+SRF also participates in WEAVE and MEGARA projects that plan to get observational data from both, stars in our own Galaxy and composition and properties of structures in external galaxies.\\
+Among its collaborations SRF is also in contact with experts on processes of star formation in molecular clouds both from obervation and from simulations. This collaboration is also important in the current project as feedback with experts on star formation (i.e. sub-grid physics in our models), will be required.
+
+
+\subsection*{METHODOLOGY}\\
+A brief summary of which methodology we are planning to follow in this project is the following:
+\begin{itemize}
+    \item Due to its multidisciplinar nature, this project requires of a deep and constant exchange of knowledge between the three basic approaches used in research, experimentation, theoretical developments and simulations. The success of this project will require of an iterative approach where each step will drink from knowledge generated in the previous one. Communication between members of the research team will be constant, and an efficient damage control system will be mandatory. So, in order to successfully reach our main objective, we will devote most of the first two months of the project on formation of the team members and on testing organisation structures.
+    \item During the staff formation period we will also continue with tests of our current numerical codes (RAMSES and ART) by comparing short runs with observations and theory. We already have a first high-resolution simulation of a Milky Way-like galaxy, obtained by using the current ART and RAMSES codes, the model is called GARROTXA \citep{RocaFabrega16} and will be used as a test case for the next runs.
+    \item A first low-resolution cosmological DM-only simulation will be ran. Initial conditions for the zoom-in phase will be selected from the low-resolution cosmological model. 
+    \item In the second half of the first year we expect to have our network of observers, experts on theory of galaxy formation and evolution and experts on numerical simulations, already established and working. We will also be in close contact with experts on star formation (sub-grid physics) and high energy events (AGNs). Improvements of the numerical code will be followed by short tests and evaluation of the results by comparing them with available observations. The OTS cycle will be fully operative and will continue all the way through the project.
+    \item At the end of the first year we will make a first high-resolution test of our numerical code. In this test we will try to reproduce and improve results obtained in previous GARROTXA models. Results obtained from the comparison will be used to give feedback and improve the used numerical code.
+    \item Although the numerical code will be always open to improvement by feedback from theoretical advances and from new observations, we will set two time instants when the main runs will be initiated: one at the second semester of the second year in the project and another 6 months before the ending.
+    \item The first large high-resolution models will to be started at the second semester in the second year will use the best version of our numerical code available. At that time we expect the code will include the most recent sub-grid physics, and that it will follow the most recent theoretical advances on galaxy formation and evolution, so it will reproduce the most recent observations. 
+    \item Results from large high-resolution simulations will be periodically monitored in order to get feedback for the next generation of models.
+    \item As soon as first models reach z=6 (after first galaxies will be created) the analysis of CGM evolution and of effects of major mergers on the galactic disks will also start.
+    \item As mentioned, a second set of large high-resolution models will be started in the first semester of the last year in the project. It is expected this second set of models will be produced by using numerical codes that will also include feedback from new observational efforts like Gaia DR3 and DESI.
+    \item We expect to finish this project with a set of unprecedented high quality models of MW-like galaxy formation and a well established productive research team. All products generated in the project will be made public and available to be used by the community.
+\end{itemize}
+
+\\
+
+
+{\subsubsection*{CONCLUSIONS: OPPORTUNITIES AND BREAKTHROUGHS}\\
+
+The main objective of this project is to advance on the knowledge of galaxy formation and evolution through the generation and analysis of new high-resolution high-quality simulations. These simulations will include the most recent theoretical advances, the newest sub-grid physics, new refinement strategies and will be compared with the oncoming high-quality data from observational collaborations like Gaia, WEAVE, Desi, MEGARA-GTC and the Gaia-ESO survey.\\
+This project takes advantage of the privileged moments we are about to live with the already available and oncoming data from COS-Halos, SDSSV, Gaia-DR3, DESY, MANGA, and the future James-Web space telescope and ELT. Also of the newly available powerful supercomputers, like the future MareNostrum5, and improvements in numerical codes consequence of a better understanding of physics involved on galaxy formation and evolution. We are in a perfect position to reach a symbiosis between theoretical approaches, simulations and observations, and thus closing the great research cycle that conduces to the advance in all modern sciences. We are convinced that results from this project will show the path for future observations, will open the door to implementation of new relevant physics in the next generation of numerical codes and most probably will help to break current theoretical paradigms.\\
+An important strength of this project is that due to its nature it is not sensitive to dead ends. Both, success and failure are used here as feedback for the next generation of theories and/or numerical codes, and give us new knowledge on how galaxy formation and evolution does or does not work.\\
+Different degrees of success can be archived in this project, from the single generation of an improved version of pre-existent numerical codes, to the release of a large set of high-resolution high-quality numerical models. All of them will be a great contribution to the understanding of processes ruling galaxy formation and evolution. The generation of a new improved version of current numerical codes will require of a better understanding of available observations and of physics involved. The production of a new set of high-quality high-resolution simulations, that include new physics and agree with the most recent observations, will became the next generation of numerical models and will be highly celebrated by the community.
+
+
+
+%%% Bibliography
+\begin{small}
+\bibliographystyle{chicago}  % ama, nar, alpha, plain, chicago, abbrv, siam
+\bibliography{my-bib.bib}
+\textcolor{red}{References!!}
+\end{small}
+
+
+%%% Content
+\newpage
+\section*{Section b: Curriculum Vitae}\\
+
+{\bf PERSONAL INFORMATION}\\
+
+{\it Family name, First name:} {\bf Roca-F\`abrega, Santi}\\
+{\it ORCID:} {\bf 0000-0002-6299-152X}\\
+{\it Date of birth:} {\bf May 22nd, 1987}\\
+{\it Nationality:} {\bf Spanish}\\
+{\it URL for web site:} {\bf http://old.phys.huji.ac.il/}\sim{\bf santi.roca/}\\
+
+{\bf EDUCATION}\\
+\\
+\begin{tabular}{ll}
+2014 & PhD - Departament d'astronomia i astrofísica, Universitat de Barcelona, Spain\\
+	 & Dr. Francesca Figueras, Dr. Octavio Valenzuela\\
+2010 &	Master: Astrophysics, particle physics and cosmology\\
+ 	 & Departament d'astronomia i astrofísica, Universitat de Barcelona, Spain\\
+2018 &	Master: Teacher training in obligatory secondary and upper secondary school education\\
+ 	 & Facultad de ciencias de la educación,  Universidad Nacional de Educación a Distáncia, España
+\end{tabular}\\
+
+{\bf CURRENT POSITION}\\
+\\
+\begin{tabular}{ll}
+2018 &	Post-doctoral researcher  "Talentos de la Comunidad de Madrid, modalidad j\´unior"\\
+	& Facultad de Ciencias F\´isicas / Departaemento de física de la Tierra y Astrofísica,\\
+	& Universidad Complutense de Madrid, Spain\\
+\end{tabular}\\
+
+{\bf PREVIOUS POSITIONS}\\
+\\
+\begin{tabular}{ll}
+2015 - 2017 & Post-doctoral researcher, Racah Institute of Physics, HUJI, Israel\\
+2014 - 2015 & Post-doctoral researcher, Departament d'Astronomia i Meteorologia, UB, Spain
+	\end{tabular}\\
+
+{\bf FELLOWSHIPS AND AWARDS}\\
+\\
+\begin{tabular}{ll}
+2010 &	Introduction to research in astrophysics, Instituto de Astrofísica de Canarias \\
+2010 - 2014 &	Pre-doc scholarship from Spanish Ministry of Science (FPU), Faculty of Physics,\\ 
+ & Universitat de Barcelona \\
+2015 - 2017 & Postdoctoral scholarship, Racah Institute of Physics, Hebrew University of Jerusalem \\
+2018-2022 & Postdoctoral scholarship Talentos Comunidad de Madrid modalidad júnior,\\
+& Faculty of physical sciences, Universidad Complutense de Madrid \\
+	\end{tabular}\\
+
+{\bf SUPERVISION OF GRADUATE STUDENTS AND POSTDOCTORAL FELLOWS}\\
+\\
+\begin{tabular}{ll}
+2019 & 5 Undergrad students, Degree on Physics, Faculty of physical sciences, Universidad \\
+ & Complutense de Madrid, Spain \\
+2019 & 1 Undergrad student, Degree on Physics, Faculty of physics, Universidad Autónoma \\
+ & de Madrid, Spain \\
+2018 - 2019 &	3 Master Students, Master on astrophysics, Faculty of physical sciences, Department\\
+ & of Earth sciences and astrophysics, Universidad Complutense de Madrid, Spain \\
+2019 - 2022 & 1 PhD student, Instituto de Astronomía, Universidad Nacional Autónoma de México,\\
+ & Mexico \\
+	\end{tabular}\\
+
+{\bf TEACHING ACTIVITIES}\\
+\\
+\begin{tabular}{ll}
+2012 – 2014  & 	Associate professor - Observational astronomy and Introduction to astronomical sciences,\\ & Degree on Physics, UB, Spain\\
+2013 - 2014 & 	Associate professor, Master on astrophysics, UNAM, México\\
+2014 – 2015  & 	Associate professor, Master on astrophysics, Universitat de Barcelona, Spain\\
+2018 - 2020 & Main professor - Formation and Evolution of Galaxies, Master on  Astrophysics, UCM, Spain\\
+2018 - 2019 & Associate professor - Astronomical instrumentation, Master on Astrophysics, UCM, Spain\\
+\end{tabular}\\
+\begin{tabular}{ll}
+2018 - 2019 & Associate professor - Extragalactic astrophysics, Degree on Physics, UCM, Spain\\
+2019 - 2020 & Associate professor - Experimental astrophysics, Master on Astrophysics, UCM, Spain\\
+\end{tabular}\\
+
+{\bf ORGANISATION OF SCIENTIFIC MEETINGS}\\
+\\
+\begin{tabular}{ll}
+2018-2019 & Member of the Social Organiser Committee of "7th and 8th AGORA workshops", University of \\
+ & California, Santa Cruz, USA \\
+2019 & Member of the Social Organiser Committee of "Talentos meeting 2019", Universidad \\
+ & Complutense de Madrid, Spain \\
+2020 & Gaia COST - School: "Galaxy modelling and High performance computing models", \\
+ & member of the Social Organiser Committee, University of Barcelona, Spain \\
+\end{tabular}\\
+
+{\bf INSTITUTIONAL RESPONSIBILITIES}\\
+\\
+\begin{tabular}{ll}
+2018 – 2022 &	Graduate Student co-Advisor, Instituto de Astronomía, UNAM, México \\
+2018 – 2019 &	Member of the Faculty Committee, Earth Physics and Astrophysics department, UCM, Spain \\ 
+2015 - 2017 &	Organiser of Sunday and Thursday Internal Seminars "Cosmolunch seminars in the Racah\\
+ &  Institute of Physics", HUJI, Israel \\
+2018 - 2019 & Organiser of the weekly astrophysics Internal seminars in the Department of Earth\\
+ &  Physics and Astrophysics, Universidad Complutense de Madrid \\
+2018 - 2019 & Organiser of the weekly multidisciplinar meetings in the Department of Earth Physics\\ & and Astrophysics, UCM, Spain \\
+2019 & Organiser of IPARCOS Institute seminars in the UCM, Spain \\
+\end{tabular}\\
+
+{\bf REVIEWING ACTIVITIES}\\
+
+\begin{tabular}{ll}
+2013 – 2019	Reviewer, Monthly Notices of the Royal Academy of Sciences, Oxford, United Kingdom  \\
+2013 – 2019	Reviewer, Astrophysical Journal, Washington, United States of America  \\
+2013 – 2019	Reviewer, Astronomy and Astrophysics, Groningen, The Netherlands  \\
+\end{tabular}\\
+
+{\bf MEMBERSHIP OF SCIENTIFIC SOCIETIES}\\
+
+\begin{tabular}{ll}
+2010 - 2015 & Member, Institut de Ciencies del Cosmos de la UB (ICCUB), Physics Faculty, Universitat \\
+ & de Barcelona, Spain \\
+2010 – 2019 &	Member, Research Network “Red Española de Gaia (REG)”  \\
+2010 – 2019 &	Member, Research Network “Gaia Research for European Astronomy Training (GREAT)”  \\
+2015 - 2019 & Task Force coordinator, Research Network "The AGORA High-resolution Galaxy\\
+ &  Simulations Comparison" \\
+2018 - 2019 & Member, Research Network "MW-Gaia COST Action" \\
+2018 - 2019 & Member, Research Network  "WEAVE ING Confluence" \\
+2010 – 2019 & Member, Sociedad Española de Astronomía, Spain \\
+2010 - 2019 & Member, Particle Physics and Cosmology Institute (IPARCOS), UCM, Madrid \\
+\end{tabular}\\
+
+{\bf MAJOR COLLABORATIONS}\\
+
+\begin{tabular}{ll}
+ 1 - & Octavio Valenzuela; Héctor Velázquez; Héctor Hernández; Vladimir Ávila-Reese, Galaxy Formation  \\
+ & and Evolution through cosmological simulations, Instituto de Astronomía de la UNAM, México DF,\\
+ & México \\
+2 -  & Joel Primack; Clayton Strawn; Xavier Prochaska, Study of the Circumgalactic Medium in\\
+ & Cosmological Simulations, University of California in Santa Cruz, United States of America \\
+3 - & Avishai Dekel; Yuval Birnboim; Nir Mandelker; Jonathan Freundlich; Nicolas Cornault; Sharon\\
+ & Lapiner, Cold flows and hydrodynamical instabilities, Hebrew University of Jerusalem, Israel \\
+4 - & Francesca Figueras; Mercé Romero-Gómez; Teresa Antoja; Roger Mor, Milky Way galaxy dynamics\\
+ & and evolution, Institut de Ciencies del Cosmos, Universitat de Barcelona, Spain  \\
+5 -  & Ji-hoon Kim and the AGORA collaboration, The AGORA project, Worldwide collaboration \\
+\end{tabular}\\
+
+{\bf CAREER BREAKS}\\
+
+\begin{tabular}{ll}
+ October 1st 2017 - April 6th 2018 & Master: Teacher training in obligatory
+ secondary and upper \\
+ & secondary school education \\
+\end{tabular}\\
+\\
+
+{\it \textbf{ Appendix: All ongoing and submitted grants and funding of the PI (Funding ID)}}\\
+\\
+{\bf Ongoing Grants}\\
+\\
+\begin{tabular}{||c|c|c|c|c|c||}
+ \hline
+ \hline
+{\it Project} & {\it Funding} & {\it Amount} & {\it Period} & {\it Role of the} & {\it Relation to current} \\
+{\it Title} & {\itsource} & {\it (Euros)} &  & {\it PI} & {\it ERC proposal} \\
+\hline
+\hline
+ \multicolumn{1}{||p{3.5cm}|}{\raggedright RTI2018-096188-B-I00: Unveiling galactic evolution through 2D spectroscopy: from MEGARA\atGTC to MOSAIC\atELT, instrumentation and scientific activities} &  \multicolumn{1}{|p{2.5cm}|}{\raggedright Spanish Ministry of Sciences and Universities } & 290400 & 2019-2021 & Researcher & \multicolumn{1}{|p{3.5cm}||}{\raggedright Funding of observational campaigns in order to provide observational data to be compared with theory and simulations}\\
+ \hline
+\multicolumn{1}{||p{3.5cm}|}{\raggedright S2018/NMT-4291: Tech2space} & \multicolumn{1}{|p{2.5cm}|}{\raggedright Comunidad de Madrid} & 895232.5 & 2019-2022 &  Researcher & \multicolumn{1}{|p{3.5cm}||}{\raggedright Training on parallelization of numerical codes}\\
+\hline
+\multicolumn{1}{||p{3.5cm}|}{\raggedright AyA2017-90589-REDT: Red para la explotación científica de MEGARA en GTC} & \multicolumn{1}{|p{2.5cm}|}{\raggedright Spanish Ministry of Sciences and Universities} & 10000 & 2018-2020 & Researcher & \multicolumn{1}{|p{3.5cm}||}{\raggedright Funding of observational campaigns in order to provide observational data to be compared with theory and simulations}\\
+\hline
+\multicolumn{1}{||p{3.5cm}|}{\raggedright AyA2016-75808-R-Explotación científica y sinergias tecnológicas de MEGARA} & \multicolumn{1}{|p{2.5cm}|}{\raggedright Spanish Ministry of Sciences and Universities} & 564000 & 2017-2019 & Researcher & \multicolumn{1}{|p{3.5cm}||}{\raggedright Training on using large facilities of observational astronomy and on data reduction}\\
+\hline
+\multicolumn{1}{||p{3.5cm}|}{\raggedright A gate to the sky: a general overview on the current astronomy (outreach project)} & \multicolumn{1}{|p{2.5cm}|}{\raggedright Private foundation: Fundació Catalunya la Pedrera} & 6400 & 2019-2020 & PI & \multicolumn{1}{|p{3.5cm}||}{\raggedright Outreach and dissemination}\\
+\hline
+\multicolumn{1}{||p{3.5cm}|}{\raggedright Financial support to revise the StG-2020 proposal} &  \multicolumn{1}{|p{2.5cm}|}{\raggedright Comunidad de Madrid} & 850 & 2019 & PI & \multicolumn{1}{|p{3.5cm}||}{\raggedright Revision of the ERC Starting Grant proposal}\\
+\hline
+\hline
+\end{tabular}\\
+\\
+\\
+{\bf Grant applications}\\
+\\
+\begin{tabular}{||c|c|c|c|c|c||}
+ \hline
+ \hline
+{\it Project} & {\it Funding} & {\it Amount} & {\it Period} & {\it Role of the} & {\it Relation to current} \\
+{\it Title} & {\itsource} & {\it (Euros)} &  & {\it PI} & {\it ERC proposal} \\
+\hline
+\hline
+\multicolumn{1}{||p{3.5cm}|}{\raggedright PhD contract for a young researcher through the European Social Fund} & \multicolumn{1}{|p{2.5cm}|}{\raggedright Comunidad de Madrid - European Social Fund} & 25000 & 2019-2020 & PI &  \multicolumn{1}{|p{3.5cm}||}{\raggedright Funding for hiring a PhD student to be part of the PI's project} \\
+\hline
+\multicolumn{1}{||p{3.5cm}|}{\raggedright Ramon y Cajal 2019} & \multicolumn{1}{|p{2.5cm}|}{\raggedright Spanish Ministry of Sciences and Universities} & 208600& 2020-2025 & PI &  \multicolumn{1}{|p{3.5cm}||}{\raggedright Alternative funding of the PI, of his travel expenses and of his access to the supercomputing facilities} \\
+\hline
+\hline
+\end{tabular}\\
+\newpage
+\section*{Section c: Early achievements track-record}\\
+
+\subsection*{Most important publications in peer-reviewed journals}\\
+
+In my early career I have published 10 papers in peer-reviewed journals of the first quartile. I am the first author in four of them and my PhD supervisors are not among the co-authors in three of them. My current H factor (reference bibliometric indicator in astrophysics), is equal to 6. The following 5 papers are the most relevant:
+
+\begin{enumerate}
+    \item {\bf S. Roca-F\`abrega}, O. Valenzuela, F. Figueras, M. Romero-G\´omez, H. Vel\´azquez, T. Antoja, B. Pichardo, On galaxy spiral arms' nature as revealed by rotation frequencies, 2013, MNRAS, 432, 2878
+    \item K. Ji-hoon, O. Agertz, R. Teyssier, M.J. Butler, D. Ceverino, J. Choi, R. Feldmann, B.W. Keller, A. Lupi, T. Quinn, Y. Revaz, S. Wallace, N.Y. Gnedin, S.N. Leitner, S. Shen, B.D. Smith, R. Thompson, M.J. Turk, T. Abel, K.S. Arraki, S.M. Benincasa, S. Chakrabarti, C. DeGraf, A. Dekel, N.J. Goldbaum, P.F. Hopkins, C.B. Hummels, A. Klypin, H. Li, P. Madau, N. Mandelker, L. Mayer, K. Nagamine, S. Nickerson, B.W. O'Shea, J.R. Primack, {\bf S. Roca-Fàbrega}, V. Semenov, I. Shimizu, C.M. Simpson, K. Todoroki, J.W. Wadsley, J.H. Wise, The AGORA High-resolution Galaxy Simulations Comparison Project. II. Isolated Disk Test, 2016, ApJ, 833, 202
+    \item {\bf S. Roca-F\`abrega}, A. Dekel, Y. Faerman, O. Gnat, C. Strawn, D. Ceverino, J. Primack, A.V. Macciò, A.A. Dutton, J.X. Prochaska, J. Stern, CGM properties in VEKA and NIHAO simulations: the OVI ionization mechanism: dependence on redshift, halo mass and radius, 2019, MNRAS, 484, 3625
+    \item T. Antoja, {\bf S. Roca-F\`abrega}, J. de Bruijne, T. Prusti, Kinematics of symmetric Galactic longitudes to probe the spiral arms of the Milky Way with Gaia, 2016, A\&A, 589, 13
+    \item {\bf S. Roca-F\`abrega}, O. Valenzuela, P. Col\´in, F. Figueras, Y. Jrongold, H. Vel\´azquez, V. \´Avila-Reese, H. Ibarra-Medel, GARROTXA Cosmological Simulations of Milky Way-sized Galaxies: General Properties, Hot Gas Distribution and Missing Baryons, 2016, ApJ, 824, 94
+\end{enumerate}\\
+
+In the first paper, me and my PhD supervisors studied the formation and evolution of spiral arms, in pure N-body simulations. The paper had a strong impact on the community and by July 2019 it reached the 50 citations. Several follow-up papers have been published following the research line initiated with this paper.\\
+In the second paper I made my first contribution on the AGORA collaboration. My participation in this project started from my attendance to the 4th AGORA workshop in Santa Cruz (August 2015), and it is not related with my previous projects, neither with my PhD supervisor's projects. This paper has now more than 35 citations and is a reference paper when testing code independence of results obtained from numerical simulations. Currently I am the  coordinator of the AGORA collaboration. Several follow-up papers are being written by July 2019, now including fully cosmological simulations.\\
+The third paper was part of a big collaboration with experts on the study of galaxy formation and evolution, focusing on properties of circumgalactic medium (CGM). It is a project that highly departs from the expertise of my PhD supervisors. The collaboration includes researchers from institutions all around the world, among them highly recognised observers in the community, theoreticians and experts on numerical simulations. The production and final publication of this paper made me to acquire coordination and leadership skills as it includes as a co-authors, researchers defending different mechanisms for the CGM production and also researchers using different numerical codes.\\
+The fourth paper was my first contact with real data and it was the starting point of a series of papers devoted to the comparison of simulations, theory and observations. Results from this and the follow-up papers are showing to be useful to interpret current high-quality observational data from Gaia-DR2, among others.\\ 
+Finally, the fifth paper highlighted here was the public presentation of the first high-resolution Milky Way-like simulation I obtained using the ART+Hydrodynamics numerical code. This paper has now more than 15 citations and I already established a research group, including several PhD and master students, that makes use of this simulation, and others obtained later, to study different problems of galaxy formation and evolution. Our research includes the study of formation and properties of spiral arms and bars in a cosmological context, the halo-galaxy connection and the CGM properties and evolution, among others.
+
+\\
+\subsection*{Responsibilities in international collaborations}\\
+
+Currently, I am the co-coordinator of the AGORA collaboration together with Dr. Kim Ji-hoon. The AGORA project is a large comparison effort devoted to find the strength and weakness of a large set of numerical codes currently used in galaxy formation and evolution research (Kim et al. 2014, 2016, the former with more than 140 citations). The AGORA collaboration includes more than 50 active members, from more than 20 different research centres all around the world. I am also the task force leader of the “CGM and Clumps”, and "Disk paper 2" working groups. The responsibilities are, among many others, to organise the monthly working group online meetings, to coordinate the generation of new simulations, to provide feedback and help to all code groups, to make the preliminary common analysis and the first consistency checks, to write the first paper drafts, all of it by reassuring a very high quality of the group publications and encouraging team participation, by solving discrepancies among participant code groups and planning the initiation of new projects. To be the coordinator of this international effort allowed me to initiate new productive collaborations, to get contact with the top scientists in the field, around the world, and to get leadership skills.\\
+
+In July 2019 I became one of the three the task force leader of the European Community COST action MW-Gaia Working Group 1 (The Milky Way as a Galaxy: revealing the Milky Way with Gaia), coordinated by Dr. Despina Hatzidimitriou. I am the task force leader of the WGT1a: Global structure and history of the MW including cluster formation and early phase dissolution, clusters as probes of the disk and halo formation history.  My responsibilities will be, among others, to coordinate the existing groups studying of formation and evolution of structures and substructures in the Milky Way galactic disk and halo, to motivate the creation of collaborative works, to organise periodic online meetings and workshops and to establish a net of researchers with common interests, including young post-docs and PhD students.\\
+As an active member of the COST-Gaia action, in collaboration with Dr. Octavio Valenzuela, I proposed a winter school on simulations of Milky Way-like galaxies. This school has been approved by the COST-Gaia action leaders and will take place in Barcelona on 14th to 17th January 2020. The school is entitled "Galaxy modelling and High performance computing models" and has an expected attendance of 30-40 pre-doc students.\\
+
+Finally, I am leading an international effort devoted to generate a new set of high resolution cosmological N-body + hydrodynamics simulations of galaxy formation and evolution. This new set of models will include galaxies in a large range of masses, from dwarfs to massive late-type systems. We are using RAMSES code (Teyssier et al. 2002, Dubois et al. 2015) with the most recent physical recipes (e.g. Grackle cooling, AGN, SMBH). These simulations will be used to interpret results from the most recent large scale surveys, both galactic (e.g. Gaia, WEAVE) and extragalactic (MaNGA, CALIFA, CANDELS). We plan to use it as a source of mock catalogues for several new surveys. This work is a follow up of the already published papers Roca-Fabrega et al. 2016 and Colin et al. 2016. In order to obtain this large set of simulations, I have already used several supercomputing facilities around the world: cori and edisson in the NERSC (USA), pléiades in the NASA-AMES (USA), Mare Nostrum in the BSC (Spain), Pirineus in the CESCA (Spain), atócatl in the IA-UNAM (Mexico), miztli in the UNAM (Mexico), eolo in the UCM (Spain) and also the cluster in the HUJI (Israel). We also plan to compare our results with same models (same initial conditions) obtained using other numerial codes. In the past I became an expert on using both AMR and SPH based codes. In particular I became an expert on using ART-UNAM (Kravtsov et al. 1997, 2003 Colin et al. 2010), ART-Ceverino (Kravtsov et al. 1997, 2003 Ceverino et al. 2010), RAMSES (Teyssier et al. 2002, Dubois et al. 2015), and GADGET-2 (Springel et al. 2005), and also on the initial conditions generator MUSIC (Hahn and Abel 2011) and the Cloudy cooling/heating software (Ferland 2013).\\
+
+\subsection*{International  recognition  in  my  research  field}\\
+
+In the recent years I have been invited to participate in several workshops and schools on the study of spiral arms formation and evolution in Milky Way like galaxies (e.g. the Gaia Challenges in Barcelona and Surrey, the Galactic Dynamics methods and techniques in the times of Gaia and large scale surveys school in Mexico and the Circumgalactic Medium Workshop in the Northwestern University, Evanston, Illinois, in July-August 2018).\\
+I attended to several national and international conferences presenting my research through both oral and poster contributions. I also gave several seminars-colloquium at wold-class research centres as University of California, Tel Aviv University, Kapteyn Institute, Heidelberg University and IA-UNAM, among others. Many of these contributions were as an independent researcher as well as on behalf of international collaborations such as Gaia or AGORA.\\
+I have recently been invited to act as referee in first quartile journals like Monthly Notices of the Royal Astronomical Society, Astronomy and Astrophysics or Astrophysical Journal.\\
+I also have been invited to be part of master and PhD evaluation committees in the Instituto de Astronom\´ia in the UNAM, the University of Barcelona and the Complutense University of Madrid.\\
+
+I am member of several research organisations, national and international. I am a full member in the Spanish Astronomical Society (SEA), the AGORA collaboration, the Cost Action CA18104 - Milky Way Gaia, and the WEAVE ING Confluence.\\
+
+I got two prestigious fellowships to continue with my research. The first one in the Hebrew University of Jerusalem, Israel (2015-2017) and the second in the excellence program of the Comunidad de Madrid "Programa Atracción de Talento 2017).
+
+
+\textcolor{red}{Preprints should be freely available from a preprint server; they should be properly referenced and either a link to the preprint or a DOI should be provided.}
+\end{document}
